@@ -32,7 +32,7 @@ const styles = theme => ({
 class CardItem extends Component {
 
   render() {
-    const { classes } = this.props;
+    const { classes, id} = this.props;
 
     return (
 
@@ -40,9 +40,9 @@ class CardItem extends Component {
       <CardActionArea>
       <CardHeader
           avatar={
-            <Blockie seed="0x123456789012345678912345678901234567890" />
+            <Blockie seed={id} />
           }
-          title="0x123456789012345678912345678901234567890"
+          title={id}
           subheader="UserID"
         />
       <CardContent>

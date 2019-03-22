@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-
-import gql from "graphql-tag";
 import { ApolloProvider } from "react-apollo";
-import { Query } from "react-apollo";
-
 import client from './api/apollo';
-
-
-
 import withStyles from '@material-ui/core/styles/withStyles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import CardItem from './components/CardItem';
-import SectionHeader from './components/SectionHeader';
-
+import SectionHeader from './layout/SectionHeader';
+import ApplicationData from './layout/ApplicationData';
 
 const styles = theme => ({
   root: {
@@ -33,70 +25,9 @@ const styles = theme => ({
 })
 
 
-
-
-
-
-
-const ExchangeRates = () => (
-  <Query
-    query={gql`
-      {
-        rates(currency: "USD") {
-          currency
-          rate
-        }
-      }
-    `}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error :(</p>;
-
-      return data.rates.map(({ currency, rate }) => (
-        <div key={currency}>
-          <p>{currency}: {rate}</p>
-        </div>
-      ));
-    }}
-  </Query>
-);
-
-
-const GET_DOGS = gql`
-  {
-    dogs {
-      id
-      breed
-    }
-  }
-`;
-
-const Dogs = ({ onDogSelected }) => (
-  <Query query={GET_DOGS}>
-    {({ loading, error, data }) => {
-      if (loading) return "Loading...";
-      if (error) return `Error! ${error.message}`;
-
-      return (
-        <select name="dog" onChange={onDogSelected}>
-          {data.dogs.map(dog => (
-            <option key={dog.id} value={dog.breed}>
-              {dog.breed}
-            </option>
-          ))}
-        </select>
-      );
-    }}
-  </Query>
-);
-
-
-
 class App extends Component {
   render() {
     const { classes } = this.props;
-
 
     return (
       <ApolloProvider client={client}>
@@ -106,10 +37,7 @@ class App extends Component {
             <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
               <Grid item xs={12}>
                 <SectionHeader title="Uniswap - User data" subtitle="Demo project using GraphQL" />
-                <CardItem />
-                <CardItem />
-                <CardItem />
-                <CardItem />
+                <ApplicationData />
               </Grid>
             </Grid>
           </Grid>
