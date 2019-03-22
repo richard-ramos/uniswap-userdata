@@ -5,8 +5,9 @@ import CardItem from '../layout/card-item';
 import InfiniteScroll from 'react-infinite-scroller';
 import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import LoadingIndicator from './loading-indicator';
+import LoadingIndicator from '../layout/loading-indicator';
 import PropTypes from 'prop-types';
+import GeneralError from '../layout/general-error';
 
 const styles = theme => ({
   center: {
@@ -21,7 +22,7 @@ const Users = ({classes}) => (
   <Query query={LOAD_USER_DATA}>
     {({ loading, error, data, fetchMore }) => {
       if (loading) return <LinearProgress color="secondary"/>;
-      if (error) return `Error! ${error.message}`;
+      if (error) return <GeneralError classes={classes} message={error.message} />;
 
       return (
         <InfiniteScroll
