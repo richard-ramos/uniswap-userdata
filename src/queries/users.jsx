@@ -30,10 +30,10 @@ const Users = ({classes}) => (
           initialLoad={false}
           loadMore={loadMoreUsers(fetchMore, data.users)}
           hasMore={true}
-          loader={<LoadingIndicator classes={classes} />}
+          loader={<LoadingIndicator key={(new Date()).getTime()} classes={classes} />}
         >
-          {data.users.map((user, i) => (
-            <CardItem key={i} id={user.id} />
+          {data.users.map(({id, txs}, i) => (
+            <CardItem key={i} id={id} transactions={txs} />
           ))}
         </InfiniteScroll>
       );

@@ -7,6 +7,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import BalanceTable from './balance-table';
 import PropTypes from 'prop-types';
+import {toBN} from 'web3-utils';
 
 const styles = theme => ({
   card: {
@@ -26,16 +27,30 @@ const styles = theme => ({
   }
 });
 
+const ETH = 'ETH';
+
 class CardItem extends Component {
+
+  calculateBalances = (transactions) => {
+    const balances = {};
+
+    transactions.forEach(item => {
+      balances[ETH] = (balances[ETH] || toBN(0)).add(toBN(item.tokenAmount));
+      balances[item.tokenSymbol] = (balances[item.tokenSymbol] || toBN(0)).add(toBN(item.tokenAmount));
+    });
+
+    return balances;
+  }
+
   render() {
-    const { classes, id } = this.props;
+    const { classes, id, transactions } = this.props;
 
     return (
       <Card className={classes.card}>
         <CardActionArea>
           <CardHeader avatar={<Blockie seed={id} />} title={id} subheader="UserID" />
           <CardContent>
-            <BalanceTable />
+            <BalanceTable balances={this.calculateBalances(transactions)} />
           </CardContent>
         </CardActionArea>
       </Card>
@@ -45,7 +60,8 @@ class CardItem extends Component {
 
 CardItem.propTypes = {
   classes: PropTypes.object,
-  id: PropTypes.string
+  id: PropTypes.string,
+  transactions: PropTypes.array
 };
 
 export default withStyles(styles)(CardItem);
