@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from 'react';
 import CardItem from "./CardItem";
-import InfiniteScroll from 'react-infinite-scroller';
 import Users from "../queries/Users";
 
 class ApplicationData extends Component {
