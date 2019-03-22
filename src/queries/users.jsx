@@ -3,9 +3,10 @@ import { Query } from 'react-apollo';
 import { LOAD_USER_DATA } from '../api/gql';
 import CardItem from '../layout/card-item';
 import InfiniteScroll from 'react-infinite-scroller';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import LoadingIndicator from './loading-indicator';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   center: {
@@ -16,16 +17,10 @@ const styles = theme => ({
   }
 });
 
-const LoadingIndicator = ({classes}) => (
-  <div className={classes.center}>
-    <CircularProgress className={classes.progress} color="secondary" />
-  </div>
-);
-
 const Users = ({classes}) => (
   <Query query={LOAD_USER_DATA}>
     {({ loading, error, data, fetchMore }) => {
-      if (loading) return<LinearProgress color="secondary"/>;
+      if (loading) return <LinearProgress color="secondary"/>;
       if (error) return `Error! ${error.message}`;
 
       return (
@@ -44,6 +39,10 @@ const Users = ({classes}) => (
     }}
   </Query>
 );
+
+Users.propTypes = {
+  classes: PropTypes.object
+};
 
 const loadMoreUsers = (fetchMore, userData) => () => {
   fetchMore({

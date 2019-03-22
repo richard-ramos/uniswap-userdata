@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import Typography from '@material-ui/core/Typography';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   sectionContainer: {
@@ -27,5 +28,11 @@ class SectionHeader extends Component {
     );
   }
 }
+
+SectionHeader.propTypes = {
+  classes: PropTypes.object,
+  title: PropTypes.string,
+  subtitle: PropTypes.string
+};
 
 export default withStyles(styles)(SectionHeader);

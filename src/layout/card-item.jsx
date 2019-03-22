@@ -6,6 +6,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import BalanceTable from './balance-table';
+import PropTypes from 'prop-types';
 
 const styles = theme => ({
   card: {
@@ -41,5 +42,10 @@ class CardItem extends Component {
     );
   }
 }
+
+CardItem.propTypes = {
+  classes: PropTypes.object,
+  id: PropTypes.string
+};
 
 export default withStyles(styles)(CardItem);
