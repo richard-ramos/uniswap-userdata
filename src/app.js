@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
-import { ApolloProvider } from "react-apollo";
+import './app.css';
+import { ApolloProvider } from 'react-apollo';
 import client from './api/apollo';
 import withStyles from '@material-ui/core/styles/withStyles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import SectionHeader from './layout/SectionHeader';
-import ApplicationData from './layout/ApplicationData';
+import SectionHeader from './layout/section-header';
+import ApplicationData from './layout/application-data';
 
 const styles = theme => ({
   root: {
@@ -22,8 +22,7 @@ const styles = theme => ({
   grid: {
     width: 1000
   }
-})
-
+});
 
 class App extends Component {
   render() {
@@ -33,7 +32,7 @@ class App extends Component {
       <ApolloProvider client={client}>
         <CssBaseline />
         <div className={classes.root}>
-          <Grid container justify="center"> 
+          <Grid container justify="center">
             <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
               <Grid item xs={12}>
                 <SectionHeader title="Uniswap - User data" subtitle="Demo project using GraphQL" />

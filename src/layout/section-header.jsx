@@ -14,7 +14,7 @@ const styles = theme => ({
 
 class SectionHeader extends Component {
   render() {
-    const { classes, title, subtitle} = this.props;
+    const { classes, title, subtitle } = this.props;
     return (
       <div className={classes.sectionContainer}>
         <Typography variant="subtitle1" className={classes.title}>
@@ -24,7 +24,7 @@ class SectionHeader extends Component {
           {subtitle}
         </Typography>
       </div>
-    )
+    );
   }
 }
 

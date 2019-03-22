@@ -6,15 +6,14 @@ import gql from 'graphql-tag';
 export const LOAD_USER_DATA = gql`
   query users($skip: Int) {
     users(first: 7, skip: $skip) {
-      id,
+      id
       txs {
-        id,
-        timeStamp,
-        ethAmount,
-        tokenAmount,
+        id
+        timeStamp
+        ethAmount
+        tokenAmount
         tokenSymbol
       }
     }
   }
 `;
-
