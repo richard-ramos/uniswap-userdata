@@ -1,13 +1,13 @@
 {
   "main.css": "/uniswap-userdata/static/css/main.fae68f71.chunk.css",
-  "main.js": "/uniswap-userdata/static/js/main.3b188b98.chunk.js",
-  "main.js.map": "/uniswap-userdata/static/js/main.3b188b98.chunk.js.map",
+  "main.js": "/uniswap-userdata/static/js/main.1c3604e5.chunk.js",
+  "main.js.map": "/uniswap-userdata/static/js/main.1c3604e5.chunk.js.map",
   "runtime~main.js": "/uniswap-userdata/static/js/runtime~main.e4987a35.js",
   "runtime~main.js.map": "/uniswap-userdata/static/js/runtime~main.e4987a35.js.map",
-  "static/js/2.fbe71a83.chunk.js": "/uniswap-userdata/static/js/2.fbe71a83.chunk.js",
-  "static/js/2.fbe71a83.chunk.js.map": "/uniswap-userdata/static/js/2.fbe71a83.chunk.js.map",
+  "static/js/2.402c5ebd.chunk.js": "/uniswap-userdata/static/js/2.402c5ebd.chunk.js",
+  "static/js/2.402c5ebd.chunk.js.map": "/uniswap-userdata/static/js/2.402c5ebd.chunk.js.map",
   "index.html": "/uniswap-userdata/index.html",
-  "precache-manifest.0a7d0378f1c52d512d88a92b9c17636b.js": "/uniswap-userdata/precache-manifest.0a7d0378f1c52d512d88a92b9c17636b.js",
+  "precache-manifest.8e6a51f89877fe1090f8e40a13603ed5.js": "/uniswap-userdata/precache-manifest.8e6a51f89877fe1090f8e40a13603ed5.js",
   "service-worker.js": "/uniswap-userdata/service-worker.js",
   "static/css/main.fae68f71.chunk.css.map": "/uniswap-userdata/static/css/main.fae68f71.chunk.css.map"
 }
