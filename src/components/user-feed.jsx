@@ -28,8 +28,8 @@ const UserFeed = ({classes, error, loading, loadMore, data: {users}}) => {
       hasMore={true}
       loader={<LoadingIndicator key={new Date().getTime()} classes={classes} />}
     >
-      {users.map(({ id, txs }, i) => (
-        <CardItem key={i} id={id} transactions={txs} />
+      {users.map(({ id, txs, exchangeBalances }, i) => (
+        <CardItem key={i} id={id} exchangeBalances={exchangeBalances} transactions={txs} />
       ))}
     </InfiniteScroll>
   );

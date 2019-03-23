@@ -37,6 +37,11 @@ const TransactionTable = ({ classes, transactions }) => (
           </TableCell>
           <TableCell>
             <Typography variant="body1" color="primary">
+              Event
+            </Typography>
+          </TableCell>
+          <TableCell>
+            <Typography variant="body1" color="primary">
               Token
             </Typography>
           </TableCell>
@@ -57,10 +62,13 @@ const TransactionTable = ({ classes, transactions }) => (
           transactions.map((row, i) => (
             <TableRow key={i}>
               <TableCell component="th" scope="row" align="right">
-                {i+1}
+                {transactions.length - i}
               </TableCell>
               <TableCell>
                 {moment(row.timeStamp * 1000).format("YYYY-MM-DD HH:mm:ss")}
+              </TableCell>
+              <TableCell>
+                {row.event}
               </TableCell>
               <TableCell>
                 <img className={classes.icon} src={process.env.PUBLIC_URL + '/images/' + row.tokenSymbol + '.png'} alt="" />{' '}

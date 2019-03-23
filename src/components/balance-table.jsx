@@ -4,7 +4,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { fromWei } from 'web3-utils';
+import { fromWei, toBN } from 'web3-utils';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -44,7 +44,7 @@ const BalanceTable = ({ classes, balances }) => (
                 <img className={classes.icon} src={process.env.PUBLIC_URL + '/images/' + symbol + '.png'} alt="" />{' '}
                 <b>{symbol}</b>
               </TableCell>
-              <TableCell align="right">{fromWei(balances[symbol], 'ether')}</TableCell>
+              <TableCell align="right">{balances[symbol].gt(toBN(0)) ? fromWei(balances[symbol], 'ether') : '0'}</TableCell>
             </TableRow>
           ))}
       </TableBody>

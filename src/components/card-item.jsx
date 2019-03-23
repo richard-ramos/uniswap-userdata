@@ -51,26 +51,27 @@ class CardItem extends Component {
     this.setState({ open: false });
   };
 
-  calculateBalances = transactions => {
-    const balances = {};
+  calculateBalances = exchangeBalances => {
+    const balances = {ETH: toBN(0)};
 
-    transactions.forEach(item => {
-      balances[ETH] = (balances[ETH] || toBN(0)).add(toBN(item.ethAmount));
-      balances[item.tokenSymbol] = (balances[item.tokenSymbol] || toBN(0)).add(toBN(item.tokenAmount));
+    exchangeBalances.forEach(item => {
+      const tokenSymbol = item.id.substring(0, item.id.indexOf('-'));
+      balances[ETH] = (balances[ETH]).add(toBN(item.ethBought)).add(toBN(item.ethDeposited)).sub(toBN(item.ethWithdrawn)).sub(toBN(item.totalEthFeesPaid));
+      balances[tokenSymbol] = (balances[tokenSymbol] || toBN(0)).add(toBN(item.tokensBought)).add(toBN(item.tokensDeposited)).add(toBN(item.tokensWithdrawn)).sub(toBN(item.totalTokenFeesPaid));
     });
 
     return balances;
   };
 
   render() {
-    const { classes, id, transactions } = this.props;
+    const { classes, id, transactions, exchangeBalances } = this.props;
     return (
       <Fragment>
         <Card className={classes.card}>
           <CardActionArea onClick={this.openDialog}>
             <CardHeader avatar={<Blockie seed={id} />} title={id} subheader="UserID" />
             <CardContent>
-              <BalanceTable balances={this.calculateBalances(transactions)} />
+              <BalanceTable balances={this.calculateBalances(exchangeBalances)} />
             </CardContent>
           </CardActionArea>
         </Card>
@@ -98,7 +99,8 @@ class CardItem extends Component {
 CardItem.propTypes = {
   classes: PropTypes.object,
   id: PropTypes.string,
-  transactions: PropTypes.array
+  transactions: PropTypes.array,
+  exchangeBalances: PropTypes.array
 };
 
 export default withMobileDialog()(withStyles(styles)(CardItem));
