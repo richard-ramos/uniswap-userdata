@@ -7,6 +7,15 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import SectionHeader from './layout/section-header';
 import ApplicationData from './layout/application-data';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#dc6be5'
+    }
+  }
+});
 
 const styles = theme => ({
   root: {
@@ -30,17 +39,19 @@ class App extends Component {
 
     return (
       <ApolloProvider client={client}>
-        <CssBaseline />
-        <div className={classes.root}>
-          <Grid container justify="center">
-            <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
-              <Grid item xs={12}>
-                <SectionHeader title="Uniswap - User data" subtitle="Demo project using GraphQL" />
-                <ApplicationData />
+        <MuiThemeProvider theme={theme}>
+          <CssBaseline />
+          <div className={classes.root}>
+            <Grid container justify="center">
+              <Grid spacing={24} alignItems="center" justify="center" container className={classes.grid}>
+                <Grid item xs={12}>
+                  <SectionHeader title="🦄 Uniswap - User data" subtitle="Demo project using GraphQL" />
+                  <ApplicationData />
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-        </div>
+          </div>
+        </MuiThemeProvider>
       </ApolloProvider>
     );
   }

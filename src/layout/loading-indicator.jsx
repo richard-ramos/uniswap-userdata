@@ -4,7 +4,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 
 const LoadingIndicator = ({classes}) => (
   <div className={classes.center}>
-    <CircularProgress className={classes.progress} color="secondary" />
+    <CircularProgress className={classes.progress} color="primary" />
   </div>
 );
 

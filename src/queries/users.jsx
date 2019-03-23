@@ -21,7 +21,7 @@ const styles = theme => ({
 const Users = ({classes}) => (
   <Query query={LOAD_USER_DATA}>
     {({ loading, error, data, fetchMore }) => {
-      if (loading) return <LinearProgress color="secondary"/>;
+      if (loading) return <LinearProgress color="primary"/>;
       if (error) return <GeneralError classes={classes} message={error.message} />;
 
       return (

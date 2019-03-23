@@ -18,7 +18,7 @@ class SectionHeader extends Component {
     const { classes, title, subtitle } = this.props;
     return (
       <div className={classes.sectionContainer}>
-        <Typography variant="subtitle1" className={classes.title}>
+        <Typography variant="h6" color="primary" className={classes.title}>
           {title}
         </Typography>
         <Typography variant="body1" gutterBottom>

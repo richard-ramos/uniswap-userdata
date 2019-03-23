@@ -35,7 +35,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "./node_modules/.bin/eslint src/**/*.jsx src/**/*.js",
+    "lint": "./node_modules/.bin/eslint src/*.js src/**/*.jsx src/**/*.js",
     "precommit": "lint-staged",
     "format": "prettier --write \"src/**/*.js*\""
   },
