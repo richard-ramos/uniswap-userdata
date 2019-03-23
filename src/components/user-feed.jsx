@@ -1,9 +1,9 @@
 import React from 'react';
-import GeneralError from '../layout/general-error';
+import GeneralError from './general-error';
 import InfiniteScroll from 'react-infinite-scroller';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import LoadingIndicator from '../layout/loading-indicator';
-import CardItem from '../layout/card-item';
+import LoadingIndicator from './loading-indicator';
+import CardItem from './card-item';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
