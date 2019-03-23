@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 
 export const LOAD_USER_DATA = gql`
   query users($skip: Int) {
-    users(first: 7, skip: $skip) {
+    users(first: 7, skip: $skip) @connection(key: "feed", filter: ["type"]){
       id
       exchangeBalances {
         id
@@ -19,13 +19,23 @@ export const LOAD_USER_DATA = gql`
         totalTokenFeesPaid
       }
       txs {
-        id
         event
         timeStamp
         ethAmount
         tokenAmount
         tokenSymbol
       }
+    }
+  }
+`;
+
+export const ADD_ETH_TRANSACTION = gql`
+  mutation addTransaction($from: ID!, $to: ID!, $amount: BigInt!, $tokenSymbol: String!) {
+    transaction(from: $from, to: $to, amount: $amount, tokenSymbol: $tokenSymbol) {
+      from,
+      to,
+      amount,
+      tokenSymbol
     }
   }
 `;
