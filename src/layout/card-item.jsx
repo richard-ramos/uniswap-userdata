@@ -12,7 +12,9 @@ import {toBN} from 'web3-utils';
 const styles = theme => ({
   card: {
     minWidth: 275,
-    margin: theme.spacing.unit * 3
+    margin: theme.spacing.unit * 3,
+    boxShadow: "0 4px 8px 0 rgba(47,128,237,.1)",
+    borderRadius: "1.25rem"
   },
   bullet: {
     display: 'inline-block',
