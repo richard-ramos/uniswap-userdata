@@ -12,7 +12,7 @@ const styles = theme => ({
   }
 });
 
-const GeneralError = ({classes, message}) => (
+const GeneralError = ({ classes, message }) => (
   <Typography variant="h5" color="primary">
     <ErrorIcon className={classes.icon} color="primary" /> {message}
   </Typography>

@@ -18,10 +18,10 @@ const styles = theme => ({
   }
 });
 
-const Users = ({classes}) => (
+const Users = ({ classes }) => (
   <Query query={LOAD_USER_DATA}>
     {({ loading, error, data, fetchMore }) => {
-      if (loading) return <LinearProgress color="primary"/>;
+      if (loading) return <LinearProgress color="primary" />;
       if (error) return <GeneralError classes={classes} message={error.message} />;
 
       return (
@@ -30,9 +30,9 @@ const Users = ({classes}) => (
           initialLoad={false}
           loadMore={loadMoreUsers(fetchMore, data.users)}
           hasMore={true}
-          loader={<LoadingIndicator key={(new Date()).getTime()} classes={classes} />}
+          loader={<LoadingIndicator key={new Date().getTime()} classes={classes} />}
         >
-          {data.users.map(({id, txs}, i) => (
+          {data.users.map(({ id, txs }, i) => (
             <CardItem key={i} id={id} transactions={txs} />
           ))}
         </InfiniteScroll>
