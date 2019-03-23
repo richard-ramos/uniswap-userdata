@@ -1,3 +1,7 @@
+/* eslint-disable unicorn/filename-case  */
+/* eslint-disable no-eq-null */
+/* eslint-disable unicorn/regex-shorthand */
+
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
