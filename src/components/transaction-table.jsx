@@ -58,6 +58,13 @@ const TransactionTable = ({ classes, transactions }) => (
         </TableRow>
       </TableHead>
       <TableBody>
+        {transactions.length === 0 && <TableRow>
+          <TableCell colSpan="6">
+            <Typography color="primary" variant="body1">
+              No transactions found
+            </Typography>
+          </TableCell>
+        </TableRow>}
         {
           transactions.map((row, i) => (
             <TableRow key={i}>
