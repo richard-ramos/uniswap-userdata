@@ -1,0 +1,26 @@
+{
+  "balance-table": {
+    "asset": "Asset",
+    "balance": "Balance"
+  },
+  "card-item": {
+    "userId": "User ID"
+  },
+  "transaction-table": {
+    "noTransactionsFound": "No transactions found",
+    "num": "#",
+    "date": "Date",
+    "event": "Event",
+    "token": "Token",
+    "ethAmount": "ETH Amount",
+    "tokenAmount": "Token Amount"
+  },
+  "form-dialog": {
+    "title": "Transfer ETH",
+    "transfer": "Transfer",
+    "cancel": "Cancel",
+    "from": "From",
+    "to": "To",
+    "amount": "Amount"
+  }
+}

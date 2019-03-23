@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles';
 import * as moment from 'moment';
+import {withTranslation} from "react-i18next";
 
 const styles = theme => ({
   icon: {
@@ -20,39 +21,39 @@ const styles = theme => ({
   }
 });
 
-const TransactionTable = ({ classes, transactions }) => (
+const TransactionTable = ({classes, transactions, t}) => (
   <Fragment>
     <Table>
       <TableHead>
         <TableRow>
           <TableCell align="right" width="5%">
             <Typography variant="body1" color="primary">
-            #
+              {t('transaction-table.num')}
             </Typography>
           </TableCell>
           <TableCell>
             <Typography variant="body1" color="primary">
-              Date
+              {t('transaction-table.date')}
             </Typography>
           </TableCell>
           <TableCell>
             <Typography variant="body1" color="primary">
-              Event
+              {t('transaction-table.event')}
             </Typography>
           </TableCell>
           <TableCell>
             <Typography variant="body1" color="primary">
-              Token
+              {t('transaction-table.token')}
             </Typography>
           </TableCell>
           <TableCell align="right">
             <Typography variant="body1" color="primary">
-              ETH Amount
+              {t('transaction-table.ethAmount')}
             </Typography>
           </TableCell>
           <TableCell align="right">
             <Typography variant="body1" color="primary">
-              Token Amount
+              {t('transaction-table.tokenAmount')}
             </Typography>
           </TableCell>
         </TableRow>
@@ -61,7 +62,7 @@ const TransactionTable = ({ classes, transactions }) => (
         {transactions.length === 0 && <TableRow>
           <TableCell colSpan="6">
             <Typography color="primary" variant="body1">
-              No transactions found
+              {t('transaction-table.noTransactionsFound')}
             </Typography>
           </TableCell>
         </TableRow>}
@@ -92,7 +93,8 @@ const TransactionTable = ({ classes, transactions }) => (
 
 TransactionTable.propTypes = {
   transactions: PropTypes.array,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  t: PropTypes.func
 };
 
-export default withStyles(styles)(TransactionTable);
+export default withTranslation()(withStyles(styles)(TransactionTable));

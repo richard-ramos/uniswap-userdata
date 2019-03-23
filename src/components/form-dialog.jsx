@@ -11,13 +11,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import PropTypes from 'prop-types';
+import {withTranslation} from "react-i18next";
 
-const FormDialog = ({handleClose, open}) => (<Dialog open={open} aria-labelledby="form-dialog-title">
-  <DialogTitle id="form-dialog-title">Transfer ETH</DialogTitle>
+const FormDialog = ({handleClose, open, t}) => (<Dialog open={open} aria-labelledby="form-dialog-title">
+  <DialogTitle id="form-dialog-title">{t('form-dialog.title')}</DialogTitle>
   <DialogContent>
     <div>
       <FormControl>
-        <InputLabel>From</InputLabel>
+        <InputLabel>{t('form-dialog.from')}</InputLabel>
         <Select value="0x0000000000000000000000000000000000000000" fullWidth>
           <MenuItem value="">
             <em>0x0000000000000000000000000000000000000000</em>
@@ -29,7 +30,7 @@ const FormDialog = ({handleClose, open}) => (<Dialog open={open} aria-labelledby
     </div>
     <div>
       <FormControl>
-        <InputLabel>To</InputLabel>
+        <InputLabel>{t('form-dialog.to')}</InputLabel>
         <Select value="0x0000000000000000000000000000000000000000" fullWidth>
           <MenuItem value="">
             <em>0x0000000000000000000000000000000000000000</em>
@@ -44,7 +45,7 @@ const FormDialog = ({handleClose, open}) => (<Dialog open={open} aria-labelledby
         autoFocus
         margin="dense"
         id="amount"
-        label="Amount"
+        label={t('form-dialog.amount')}
         type="number"
         step="any"
         fullWidth
@@ -53,10 +54,10 @@ const FormDialog = ({handleClose, open}) => (<Dialog open={open} aria-labelledby
   </DialogContent>
   <DialogActions>
     <Button onClick={handleClose} color="primary">
-      Cancel
+      {t('form-dialog.cancel')}
     </Button>
     <Button onClick={handleClose} color="primary">
-      Transfer
+      {t('form-dialog.transfer')}
     </Button>
   </DialogActions>
 </Dialog>
@@ -64,7 +65,8 @@ const FormDialog = ({handleClose, open}) => (<Dialog open={open} aria-labelledby
 
 FormDialog.propTypes = {
   handleClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
+  t: PropTypes.func
 };
 
-export default FormDialog;
+export default withTranslation()(FormDialog);

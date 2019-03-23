@@ -7,6 +7,8 @@ import SectionHeader from './layout/section-header';
 import ApplicationData from './layout/application-data';
 import Template from './layout/template';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { I18nextProvider } from 'react-i18next';
+import i18n from './i18n';
 
 const theme = createMuiTheme({
   typography: {
@@ -24,11 +26,13 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <MuiThemeProvider theme={theme}>
-          <CssBaseline />
-          <Template>
-            <SectionHeader title="🦄 Uniswap - User data" subtitle="Demo project using GraphQL" />
-            <ApplicationData />
-          </Template>
+          <I18nextProvider i18n={ i18n }>
+            <CssBaseline />
+            <Template>
+              <SectionHeader title="🦄 Uniswap - User data" subtitle="by @rramos" />
+              <ApplicationData />
+            </Template>
+          </I18nextProvider>
         </MuiThemeProvider>
       </ApolloProvider>
     );

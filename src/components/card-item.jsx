@@ -14,7 +14,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import withMobileDialog from '@material-ui/core/withMobileDialog';
+import {withTranslation} from "react-i18next";
 
 const styles = theme => ({
   card: {
@@ -64,12 +64,12 @@ class CardItem extends Component {
   };
 
   render() {
-    const { classes, id, transactions, exchangeBalances } = this.props;
+    const { classes, id, transactions, exchangeBalances, t } = this.props;
     return (
       <Fragment>
         <Card className={classes.card}>
           <CardActionArea onClick={this.openDialog}>
-            <CardHeader avatar={<Blockie seed={id} />} title={id} subheader="UserID" />
+            <CardHeader avatar={<Blockie seed={id} />} title={id} subheader={t('card-item.userId')} />
             <CardContent>
               <BalanceTable balances={this.calculateBalances(exchangeBalances)} />
             </CardContent>
@@ -100,7 +100,8 @@ CardItem.propTypes = {
   classes: PropTypes.object,
   id: PropTypes.string,
   transactions: PropTypes.array,
-  exchangeBalances: PropTypes.array
+  exchangeBalances: PropTypes.array,
+  t: PropTypes.func
 };
 
-export default withMobileDialog()(withStyles(styles)(CardItem));
+export default withTranslation()(withStyles(styles)(CardItem));

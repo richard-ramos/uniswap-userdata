@@ -8,6 +8,7 @@ import { fromWei, toBN } from 'web3-utils';
 import PropTypes from 'prop-types';
 import { Typography } from '@material-ui/core';
 import withStyles from '@material-ui/core/styles/withStyles';
+import {withTranslation} from "react-i18next";
 
 const styles = theme => ({
   icon: {
@@ -19,19 +20,19 @@ const styles = theme => ({
   }
 });
 
-const BalanceTable = ({ classes, balances }) => (
+const BalanceTable = ({ classes, balances, t }) => (
   <Fragment>
     <Table>
       <TableHead>
         <TableRow>
           <TableCell>
             <Typography variant="body1" color="primary">
-              Asset
+              {t('balance-table.asset')}
             </Typography>
           </TableCell>
           <TableCell align="right">
             <Typography variant="body1" color="primary">
-              Balance
+              {t('balance-table.balance')}
             </Typography>
           </TableCell>
         </TableRow>
@@ -54,7 +55,8 @@ const BalanceTable = ({ classes, balances }) => (
 
 BalanceTable.propTypes = {
   balances: PropTypes.object,
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  t: PropTypes.func
 };
 
-export default withStyles(styles)(BalanceTable);
+export default withTranslation()(withStyles(styles)(BalanceTable));
