@@ -45,7 +45,7 @@ const BalanceTable = ({ classes, balances, t }) => (
                 <img className={classes.icon} src={process.env.PUBLIC_URL + '/images/' + symbol + '.png'} alt="" />{' '}
                 <b>{symbol}</b>
               </TableCell>
-              <TableCell align="right">{balances[symbol].gt(toBN(0)) ? fromWei(balances[symbol], 'ether') : '0'}</TableCell>
+              <TableCell align="right">{balances[symbol].gt(toBN(0)) ? fromWei(balances[symbol], 'ether') : '(' + fromWei(balances[symbol], 'ether') + ')' }</TableCell>
             </TableRow>
           ))}
       </TableBody>

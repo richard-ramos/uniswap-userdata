@@ -61,7 +61,7 @@ class UserFeed extends Component {
         <AddIcon />
       </Fab>
 
-      <FormDialog open={this.state.open} handleClose={this.handleClose} />
+      <FormDialog open={this.state.open} handleClose={this.handleClose} addresses={[...new Set(users.map(({id}) => id))]} />
     </Fragment>);
   }
 }
